@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hay_project/Controller/GameController.dart';
 import 'package:hay_project/data/titles.dart';
-import 'package:hay_project/view/games/BalanceGame.dart';
+import 'package:hay_project/view/games/BalanceGamePage.dart';
 import 'package:hay_project/view/games/OXQuiz.dart';
-import 'package:hay_project/view/games/StartGame.dart';
-import 'package:hay_project/view/games/WithOneMouthGame.dart';
+import 'package:hay_project/view/games/StartGamePage.dart';
+import 'package:hay_project/view/games/WithOneMouthGamePage.dart';
 
 import 'Quiz.dart';
 
@@ -18,6 +19,7 @@ class GameContainer extends StatefulWidget {
 
 class _GameContainerState extends State<GameContainer> {
   int? gameIdx;
+  GameController gameController = new GameController();
 
   @override
   void initState() {
@@ -63,15 +65,15 @@ class _GameContainerState extends State<GameContainer> {
   Widget loadGame(int idx){
     switch(idx){
       case 4:
-        return StartGame();
+        return StartGamePage(gameController: gameController,);
       case 3:
         return Quiz();
       case 2:
         return OXQuiz();
       case 1:
-        return WithOneMouthGame();
+        return WithOneMouthGamePage(gameController: gameController);
       default:
-        return BalanceGame();
+        return BalanceGamePage(gameController: gameController,);
     }
   }
 }
