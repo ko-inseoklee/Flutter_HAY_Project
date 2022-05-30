@@ -32,8 +32,6 @@ class _WithOneMouthGamePageState extends State<WithOneMouthGamePage> {
           }
           else if(!snapshot.hasError){
             withOneMouth = snapshot.data!;
-            print("success");
-            print(snapshot.data!.word1);
             return Column(
               children: [
                 Expanded(
@@ -69,7 +67,7 @@ class _WithOneMouthGamePageState extends State<WithOneMouthGamePage> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 150,
+                  height: 100,
                   padding: EdgeInsets.only(top: 16, bottom: 16),
                   alignment: Alignment.topCenter,
                   child: Container(

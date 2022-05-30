@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hay_project/view/home/Game.dart';
+import 'package:hay_project/view/communication/Communication.dart';
+import 'package:hay_project/view/psychologyTest/PsychologyTest.dart';
+import 'package:hay_project/view/games/Game.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _pageIndex = 0;
   List<String> name = ["대화","게임","심리테스트","마이페이지"];
-  List<Widget> pages = [GamePage(),GamePage(),GamePage(),GamePage()];
+  List<Widget> pages = [CommunicationPage(),GamePage(),PsychologyTestPage(),GamePage()];
 
 
   @override

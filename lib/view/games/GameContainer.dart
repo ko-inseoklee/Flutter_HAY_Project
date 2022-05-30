@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:hay_project/Controller/GameController.dart';
 import 'package:hay_project/data/titles.dart';
 import 'package:hay_project/view/games/BalanceGamePage.dart';
-import 'package:hay_project/view/games/OXQuiz.dart';
+import 'package:hay_project/view/games/OXQuizPage.dart';
 import 'package:hay_project/view/games/StartGamePage.dart';
 import 'package:hay_project/view/games/WithOneMouthGamePage.dart';
 
-import 'Quiz.dart';
+import 'QuizPage.dart';
 
 class GameContainer extends StatefulWidget {
   final String gameTitle;
@@ -67,9 +67,9 @@ class _GameContainerState extends State<GameContainer> {
       case 4:
         return StartGamePage(gameController: gameController,);
       case 3:
-        return Quiz();
+        return QuizPage(gameController: gameController,);
       case 2:
-        return OXQuiz();
+        return OXQuizPage(gameController: gameController,);
       case 1:
         return WithOneMouthGamePage(gameController: gameController);
       default:

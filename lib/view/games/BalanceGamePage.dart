@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hay_project/Controller/GameController.dart';
 import 'package:hay_project/model/games/BalanceGame.dart';
+import 'package:hay_project/view/games/BalanceGameCard.dart';
 
 class BalanceGamePage extends StatefulWidget {
   GameController gameController;
@@ -13,11 +14,13 @@ class BalanceGamePage extends StatefulWidget {
 
 class _BalanceGamePageState extends State<BalanceGamePage> {
   late BalanceGame balanceGame;
+  int onClick = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    onClick = 0;
   }
 
   @override
@@ -35,39 +38,11 @@ class _BalanceGamePageState extends State<BalanceGamePage> {
           return Column(
             children: [
               Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 40),
-                        width: 303,
-                        height: 191,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16)
-                        ),
-                        child: Text(balanceGame.solution1,style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600), textAlign: TextAlign.center,)
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 40),
-                        child: Text("VS",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600, color: Colors.white)),
-                      ),
-                      Container(
-                          width: 303,
-                          height: 191,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16)
-                          ),
-                          child: Text(balanceGame.solution2,style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600), textAlign: TextAlign.center,)
-                      ),
-                    ],
-                  )
+                  child: BalanceGameCard(balanceGame: balanceGame,id: 0,onClick: onClick,)
               ),
               Container(
                 width: double.infinity,
-                height: 150,
+                height: 100,
                 padding: EdgeInsets.only(top: 16, bottom: 16),
                 alignment: Alignment.topCenter,
                 child: Container(
@@ -82,6 +57,7 @@ class _BalanceGamePageState extends State<BalanceGamePage> {
                     onPressed: () async {
                       balanceGame = await widget.gameController.loadRandomBalanceGame();
                       setState(() {
+                        onClick = 0;
                       });
                     },
                     child: Image.asset("image/GameIcons/CallRandom.png"),
