@@ -26,53 +26,53 @@ class _BalanceGamePageState extends State<BalanceGamePage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<BalanceGame>(
-      future: widget.gameController.loadRandomBalanceGame(),
-      builder: (context, snapshot){
-        if(snapshot.hasData == false){
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        else if(!snapshot.hasError){
-          balanceGame = snapshot.data!;
-          return Column(
-            children: [
-              Expanded(
-                  child: BalanceGameCard(balanceGame: balanceGame,id: 0,onClick: onClick,)
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                padding: EdgeInsets.only(top: 16, bottom: 16),
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 130,
-                  height: 52,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffffc93c)
-                  ),
-                  child: FlatButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () async {
-                      balanceGame = await widget.gameController.loadRandomBalanceGame();
-                      setState(() {
-                        onClick = 0;
-                      });
-                    },
-                    child: Image.asset("image/GameIcons/CallRandom.png"),
+        future: widget.gameController.loadRandomBalanceGame(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData == false) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (!snapshot.hasError) {
+            balanceGame = snapshot.data!;
+            return Column(
+              children: [
+                Expanded(
+                    child: BalanceGameCard(
+                  balanceGame: balanceGame,
+                  id: 0,
+                  onClick: onClick,
+                )),
+                Container(
+                  width: double.infinity,
+                  height: 100,
+                  padding: EdgeInsets.only(top: 16, bottom: 16),
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: 130,
+                    height: 52,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color(0xffffc93c)),
+                    child: FlatButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () async {
+                        balanceGame =
+                            await widget.gameController.loadRandomBalanceGame();
+                        setState(() {
+                          onClick = 0;
+                        });
+                      },
+                      child: Image.asset("image/GameIcons/CallRandom.png"),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          );
-        }
-        else{
-          return Center(
-            child: Text("데이터가 없습니다."),
-          );
-        }
-      }
-    );
+              ],
+            );
+          } else {
+            return Center(
+              child: Text("데이터가 없습니다."),
+            );
+          }
+        });
   }
 }

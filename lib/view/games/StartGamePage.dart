@@ -17,7 +17,6 @@ class _StartGamePageState extends State<StartGamePage> {
   late StartGame startGame;
   bool isToggled = false;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -29,31 +28,37 @@ class _StartGamePageState extends State<StartGamePage> {
   Widget build(BuildContext context) {
     return FutureBuilder<StartGame>(
         future: widget.gameController.loadRandomStartGame(),
-        builder: (context, snapshot){
-          if(snapshot.hasData == false){
+        builder: (context, snapshot) {
+          if (snapshot.hasData == false) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          }
-          else if(!snapshot.hasError){
+          } else if (!snapshot.hasError) {
             startGame = snapshot.data!;
             return Column(
               children: [
                 Expanded(
                     child: Column(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(top: 40),
-                            width: 303,
-                            height: 191,
-                            alignment: Alignment.center,
-                            child: Text("초성이 들어가는 단어를 \n돌아가면서 말해보세요!",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w600),)
-                        ),
-                        ToggleButton(isToggled: false, gameTitle: 'start',data: startGame,)
-
-                      ],
+                  children: [
+                    Container(
+                        margin: EdgeInsets.only(top: 40),
+                        width: 303,
+                        height: 191,
+                        alignment: Alignment.center,
+                        child: Text(
+                          "초성이 들어가는 단어를 \n돌아가면서 말해보세요!",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600),
+                        )),
+                    ToggleButton(
+                      isToggled: false,
+                      gameTitle: 'start',
+                      data: startGame,
                     )
-                ),
+                  ],
+                )),
                 Container(
                   width: double.infinity,
                   height: 100,
@@ -64,12 +69,12 @@ class _StartGamePageState extends State<StartGamePage> {
                     height: 52,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color(0xffffc93c)
-                    ),
+                        color: Color(0xffffc93c)),
                     child: FlatButton(
                       padding: EdgeInsets.zero,
                       onPressed: () async {
-                        startGame = await widget.gameController.loadRandomStartGame();
+                        startGame =
+                            await widget.gameController.loadRandomStartGame();
                         setState(() {
                           isToggled = false;
                         });
@@ -80,13 +85,11 @@ class _StartGamePageState extends State<StartGamePage> {
                 ),
               ],
             );
-          }
-          else{
+          } else {
             return Center(
               child: Text("데이터가 없습니다."),
             );
           }
-        }
-    );
+        });
   }
 }

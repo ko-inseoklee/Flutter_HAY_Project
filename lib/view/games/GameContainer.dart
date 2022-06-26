@@ -11,7 +11,7 @@ import 'QuizPage.dart';
 
 class GameContainer extends StatefulWidget {
   final String gameTitle;
-  const GameContainer({Key? key,required this.gameTitle}) : super(key: key);
+  const GameContainer({Key? key, required this.gameTitle}) : super(key: key);
 
   @override
   _GameContainerState createState() => _GameContainerState();
@@ -33,7 +33,10 @@ class _GameContainerState extends State<GameContainer> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(widget.gameTitle, style: TextStyle(color: Colors.white),),
+        title: Text(
+          widget.gameTitle,
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Color(0xff07689F),
         elevation: 0.0,
       ),
@@ -43,37 +46,36 @@ class _GameContainerState extends State<GameContainer> {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [
-                    0.1,
-                    0.9
-                  ],
-                  colors: [
-                    Color(0xff07689F),
-                    Color(0xff71BACD)
-                  ]
-              )
-          ),
-          child: Center(child: loadGame(gameIdx!))
-      ),
+                  stops: [0.1, 0.9],
+                  colors: [Color(0xff07689F), Color(0xff71BACD)])),
+          child: Center(child: loadGame(gameIdx!))),
     );
   }
 
-  int loadGameIndex(){
+  int loadGameIndex() {
     return gameTitles.indexOf(widget.gameTitle);
   }
 
-  Widget loadGame(int idx){
-    switch(idx){
+  Widget loadGame(int idx) {
+    switch (idx) {
       case 4:
-        return StartGamePage(gameController: gameController,);
+        return StartGamePage(
+          gameController: gameController,
+        );
       case 3:
-        return QuizPage(gameController: gameController,);
+        return QuizPage(
+          gameController: gameController,
+        );
       case 2:
-        return OXQuizPage(gameController: gameController,);
+        return OXQuizPage(
+          gameController: gameController,
+        );
       case 1:
         return WithOneMouthGamePage(gameController: gameController);
       default:
-        return BalanceGamePage(gameController: gameController,);
+        return BalanceGamePage(
+          gameController: gameController,
+        );
     }
   }
 }

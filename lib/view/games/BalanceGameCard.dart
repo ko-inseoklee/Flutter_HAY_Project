@@ -5,7 +5,12 @@ class BalanceGameCard extends StatefulWidget {
   int id;
   int onClick;
   BalanceGame balanceGame;
-  BalanceGameCard({Key? key,required this.id, required this.onClick,required this.balanceGame}) : super(key: key);
+  BalanceGameCard(
+      {Key? key,
+      required this.id,
+      required this.onClick,
+      required this.balanceGame})
+      : super(key: key);
 
   @override
   _BalanceGameCardState createState() => _BalanceGameCardState();
@@ -17,7 +22,6 @@ class _BalanceGameCardState extends State<BalanceGameCard> {
     return Column(
       children: [
         FlatButton(
-
           onPressed: () {
             setState(() {
               widget.onClick = 1;
@@ -29,18 +33,24 @@ class _BalanceGameCardState extends State<BalanceGameCard> {
               height: 191,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: widget.onClick != 1? Colors.white : Color(0xffFFC93C),
-                  borderRadius: BorderRadius.circular(16)
-              ),
-              child: Text(widget.balanceGame.solution1,style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600), textAlign: TextAlign.center,)
-          ),
+                  color: widget.onClick != 1 ? Colors.white : Color(0xffFFC93C),
+                  borderRadius: BorderRadius.circular(16)),
+              child: Text(
+                widget.balanceGame.solution1,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                textAlign: TextAlign.center,
+              )),
         ),
         Container(
           margin: EdgeInsets.symmetric(vertical: 40),
-          child: Text("VS",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600, color: Colors.white)),
+          child: Text("VS",
+              style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white)),
         ),
         FlatButton(
-          onPressed: (){
+          onPressed: () {
             setState(() {
               widget.onClick = 2;
             });
@@ -50,11 +60,13 @@ class _BalanceGameCardState extends State<BalanceGameCard> {
               height: 191,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: widget.onClick != 2? Colors.white : Color(0xffFFC93C),
-                  borderRadius: BorderRadius.circular(16)
-              ),
-              child: Text(widget.balanceGame.solution2,style: TextStyle(fontSize: 25,fontWeight: FontWeight.w600), textAlign: TextAlign.center,)
-          ),
+                  color: widget.onClick != 2 ? Colors.white : Color(0xffFFC93C),
+                  borderRadius: BorderRadius.circular(16)),
+              child: Text(
+                widget.balanceGame.solution2,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                textAlign: TextAlign.center,
+              )),
         ),
       ],
     );

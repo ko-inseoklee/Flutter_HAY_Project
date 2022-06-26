@@ -12,7 +12,7 @@ class CommunicationPage extends StatefulWidget {
 }
 
 class _CommunicationPageState extends State<CommunicationPage> {
-  List<String> categories = ["나","가치","가족","상상","일상","과거","미래","관계"];
+  List<String> categories = ["나", "가치", "가족", "상상", "일상", "과거", "미래", "관계"];
 
   @override
   void initState() {
@@ -29,24 +29,21 @@ class _CommunicationPageState extends State<CommunicationPage> {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [
-                    0.1,
-                    0.9
-                  ],
-                  colors: [
-                    Color(0xff07689F),
-                    Color(0xff71BACD)
-                  ]
-              )
-          ),
+                  stops: [0.1, 0.9],
+                  colors: [Color(0xff07689F), Color(0xff71BACD)])),
           child: Center(
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-                itemBuilder: (context,index){
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
                   return FlatButton(
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CommunicationQuestion(communicationTitle: categories[index],) ));
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CommunicationQuestion(
+                                    communicationTitle: categories[index],
+                                  )));
                     },
                     child: Container(
                       height: 285,
@@ -64,21 +61,22 @@ class _CommunicationPageState extends State<CommunicationPage> {
                             width: 190,
                             height: 245,
                             decoration: BoxDecoration(
-                              color: Color(0xffffc93c).withOpacity(0.9),
-                              borderRadius: BorderRadius.circular(8)
-                            ),
+                                color: Color(0xffffc93c).withOpacity(0.9),
+                                borderRadius: BorderRadius.circular(8)),
                             child: Center(
-                              child: Text(categories[index],style: TextStyle(fontWeight: FontWeight.w600,fontSize: 40),),
+                              child: Text(
+                                categories[index],
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 40),
+                              ),
                             ),
                           )
                         ],
                       ),
                     ),
                   );
-                }
-            ),
-          )
-      ),
+                }),
+          )),
     );
   }
 
