@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hay_project/view/profile/signUp/TOSPage.dart';
 
 class ProfileMainPage extends StatefulWidget {
   const ProfileMainPage({Key? key}) : super(key: key);
@@ -71,7 +73,9 @@ class _ProfileMainPageState extends State<ProfileMainPage> {
                     child: Column(
                       children: [
                         FlatButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(TOSPage());
+                          },
                           child: Container(
                             height: 50,
                             width: 385,
